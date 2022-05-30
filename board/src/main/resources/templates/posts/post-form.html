@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Post Directory</title>
+</head>
+
+<body>
+<div class="container">
+    <h3>Spring Boot Board Service - by Geon Hyuk Im</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Post</p>
+
+    <form action="#" th:action="@{/posts/save}"
+          th:object="${post}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{title}"
+               class="form-control mb-4 col-4" placeholder="Title">
+
+        <input type="text" th:field="*{content}"
+               class="form-control mb-4 col-4" placeholder="Content">
+
+        <input type="text" th:field="*{writer}"
+               class="form-control mb-4 col-4" placeholder="Writer">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+
+    <hr>
+    <a th:href="@{/posts/list}">Back to Main Page</a>
+</div>
+</body>
+</html>

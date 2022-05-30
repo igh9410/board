@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <title>Spring Boot Board Service - by Geon Hyuk Im</title>
+</head>
+<body>
+<div class="container">
+  <h3>Spring Boot Board Service - by Geon Hyuk Im</h3>
+  <hr>
+
+  <!-- Add a button -->
+  <a th:href="@{/posts/showFormForAdd}"
+     class="btn btn-primary btn-sm mb-3">
+    Write
+  </a>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>Post Number</th>
+      <th>Title</th>
+      <th>Writer</th>
+      <th>Action</th>
+      <th>Hits</th>
+    </thead>
+
+    <tbody>
+    <tr th:each="tempPost : ${posts}">
+      <td th:text="${tempPost.id}" />
+      <td>
+       <a th:href="@{/posts/view(postId=${tempPost.id})}" th:text="${tempPost.title}"></a>
+      </td>
+      <td th:text="${tempPost.writer}" />
+      <td>
+       <!-- Add update button/link -->
+
+        <a th:href="@{/posts/showFormForUpdate(postId=${tempPost.id})}"
+           class="btn btn-info btn-sm">
+          Update
+        </a>
+
+        <!-- Add delete button/link -->
+        <a th:href="@{/posts/delete(postId=${tempPost.id})}"
+           class="btn btn-danger btn-sm"
+           onclick="if (!(confirm('Are you sure you want to delete this post?'))) return false">
+          Delete
+        </a>
+      </td>
+      <td th:text="${tempPost.hits}" />
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

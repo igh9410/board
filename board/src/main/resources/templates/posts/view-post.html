@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Spring Boot Board Service - by Geon Hyuk Im</title>
+</head>
+<body>
+<div class="container">
+    <h3>Spring Boot Board Service - by Geon Hyuk Im</h3>
+    <hr>
+
+    <p th:text="${post.title}">Title</p>
+    <p th:text="${post.content}">Content</p>
+
+    <a th:href="@{/posts/list}">Back to Main Page</a>
+</div>
+</body>
+</html>
