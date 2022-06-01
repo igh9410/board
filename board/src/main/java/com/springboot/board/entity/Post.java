@@ -1,12 +1,20 @@
 package com.springboot.board.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 import javax.persistence.*;
-
+import java.util.Date;
 
 
 @Entity
 @Table(name="post")
+@Getter
+@Setter
 public class Post {
 
     // define fields
@@ -16,38 +24,41 @@ public class Post {
     @Column(name="id")
     private Long id;
 
-    @Column(name="title")
+    @Column(name="title", nullable = false)
     private String title;
 
-    @Column(name="content", columnDefinition = "TEXT")
+    @Column(name="content", columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    @Column(name="writer")
+    @Column(name="writer", nullable = false)
     private String writer;
 
-    @Column(name="hits", columnDefinition = "integer default 0", nullable = false)
+    @Column(name="hits", nullable = false)
     private int hits;
 
+    @Column(name = "date_created")
+    @CreationTimestamp
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date dateCreated;
+
+    @Column(name = "last_updated")
+    @UpdateTimestamp
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date lastUpdated;
 
 
+    /*
     public Post() {
 
     }
-    public Post(String title, String content, String writer) {
-        this.title = title;
-        this.content = content;
-        this.writer = writer;
-    }
-
 
     public Post(Long id, String title, String content, String writer) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.writer = writer;
-    }
-
-
+    } */
+    /*
     // define getter / setter
     public Long getId() {
         return id;
@@ -89,6 +100,6 @@ public class Post {
         this.hits = hits;
     }
 
-
+    */
 
 }

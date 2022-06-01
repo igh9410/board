@@ -29,6 +29,11 @@
         <input type="text" th:field="*{writer}"
                class="form-control mb-4 col-4" placeholder="Writer">
 
+        <input type="hidden" th:field="*{hits}">
+        <input type="hidden" th:field="*{dateCreated}">
+        <input type="hidden" th:field="*{lastUpdated}">
+
+
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>
 

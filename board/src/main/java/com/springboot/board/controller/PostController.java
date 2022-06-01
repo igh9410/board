@@ -43,7 +43,7 @@ public class PostController {
         return "posts/post-form";
     }
 
-    // add mapping for updating the article
+    // add mapping for update form of the article
     @GetMapping("/showFormForUpdate")
     public String showFormForUpdate(@RequestParam("postId") Long theId,
                                     Model theModel) {
@@ -61,7 +61,6 @@ public class PostController {
     // add mapping for saving the article
     @PostMapping("/save")
     public String savePost(@ModelAttribute("post") Post thePost) {
-
         // save the post
         postService.save(thePost);
 

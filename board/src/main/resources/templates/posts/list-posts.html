@@ -25,6 +25,8 @@
       <th>Writer</th>
       <th>Action</th>
       <th>Hits</th>
+      <th>Created Date</th>
+      <th>Last Updated Date</th>
     </thead>
 
     <tbody>
@@ -50,6 +52,8 @@
         </a>
       </td>
       <td th:text="${tempPost.hits}" />
+      <td th:text="${#dates.format(tempPost.dateCreated, 'yyyy-MM-dd HH:mm')}" />
+      <td th:text="${#dates.format(tempPost.lastUpdated, 'yyyy-MM-dd HH:mm')}" />
     </tr>
     </tbody>
   </table>
