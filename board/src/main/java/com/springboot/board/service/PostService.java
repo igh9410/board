@@ -1,7 +1,9 @@
 package com.springboot.board.service;
 
-import com.springboot.board.entity.Post;
 
+import com.springboot.board.entity.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 

@@ -2,6 +2,10 @@ package com.springboot.board.controller;
 
 import com.springboot.board.entity.Post;
 import com.springboot.board.service.PostService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +27,7 @@ public class PostController {
     public String listPosts(Model theModel) {
 
         // get posts from db
-        List<Post> thePosts = postService.findAll();
+        List<Post> thePosts =  postService.findAll();
 
         // add to the spring model
         theModel.addAttribute("posts", thePosts);
