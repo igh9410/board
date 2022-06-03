@@ -24,10 +24,13 @@ public class PostController {
 
     // add mapping for "/list"
     @GetMapping("/list")
-    public String listPosts(Model theModel, @PageableDefault(size = 2) Pageable pageable) {
+    public String listPosts(Model theModel, @PageableDefault(size = 10) Pageable pageable, @RequestParam(required = false, defaultValue = "")
+            String searchText) {
 
         // get posts from db
-        Page<Post> thePosts =  postService.findAll(pageable);
+        // Page<Post> thePosts =  postService.findAll(pageable);
+        Page<Post> thePosts = postService.findByTitleContainingOrContentContaining(searchText, searchText, pageable);
+
 
         int startPage = Math.max(1, thePosts.getPageable().getPageNumber() - 4);
         int endPage = Math.min(thePosts.getTotalPages(), thePosts.getPageable().getPageNumber() + 4);

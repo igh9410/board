@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,10 @@ public class PostServiceImpl implements PostService {
         return postRepository.findAllByOrderByIdDesc(pageable);
     }
 
-
+    @Override
+    public Page<Post> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable) {
+        return postRepository.findByTitleContainingOrContentContainingOrderByIdDesc(title, content, pageable);
+    }
 
 
     @Override

@@ -60,16 +60,23 @@
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
       <li class="page-item" th:classappend = "${1 == posts.pageable.pageNumber + 1} ? 'disabled'">
-        <a class="page-link" href="#" th:href="@{/posts/list(page=${posts.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">Previous</a>
+        <a class="page-link" href="#" th:href="@{/posts/list(page=${posts.pageable.pageNumber - 1},searchText=${param.searchText})}" tabindex="-1" aria-disabled="true">Previous</a>
       </li>
       <li class="page-item" th:classappend = "${i == posts.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
-        <a class="page-link" href="#" th:href="@{/posts/list(page=${i-1})}" th:text="${i}">1</a>
+        <a class="page-link" href="#" th:href="@{/posts/list(page=${i-1},searchText=${param.searchText})}" th:text="${i}">1</a>
       </li>
       <li class="page-item" th:classappend = "${posts.totalPages == posts.pageable.pageNumber + 1} ? 'disabled'">
-        <a class="page-link" href="#" th:href="@{/posts/list(page=${posts.pageable.pageNumber + 1})}"> Next</a>
+        <a class="page-link" href="#" th:href="@{/posts/list(page=${posts.pageable.pageNumber + 1}, searchText=${param.searchText})}"> Next</a>
       </li>
     </ul>
   </nav>
+  <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/posts/list}">
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="searchText" class="sr-only">Search with keywords</label>
+      <input type="text" class="form-control" id="searchText" name="searchText" th:value="${param.searchText}">
+    </div>
+    <button type="submit" class="btn btn-dark mb-2">Search</button>
+  </form>
 </div>
 </body>
 </html>

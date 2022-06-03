@@ -11,6 +11,8 @@ public interface PostService {
 
     public Page<Post> findAll(Pageable pageable);
 
+    public Page<Post> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable);
+
     public Post findById(Long theId);
 
     public void save(Post thePost);

@@ -19,4 +19,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     // add a method to sort by id
     public Page<Post> findAllByOrderByIdDesc(Pageable pageable);
 
+
+    public Page<Post> findByTitleContainingOrContentContainingOrderByIdDesc(String title, String content, Pageable pageable);
+
 }
