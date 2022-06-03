@@ -3,9 +3,9 @@ package com.springboot.board.controller;
 import com.springboot.board.entity.Post;
 import com.springboot.board.service.PostService;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,10 +24,15 @@ public class PostController {
 
     // add mapping for "/list"
     @GetMapping("/list")
-    public String listPosts(Model theModel) {
+    public String listPosts(Model theModel, @PageableDefault(size = 2) Pageable pageable) {
 
         // get posts from db
-        List<Post> thePosts =  postService.findAll();
+        Page<Post> thePosts =  postService.findAll(pageable);
+
+        int startPage = Math.max(1, thePosts.getPageable().getPageNumber() - 4);
+        int endPage = Math.min(thePosts.getTotalPages(), thePosts.getPageable().getPageNumber() + 4);
+        theModel.addAttribute("startPage", startPage);
+        theModel.addAttribute("endPage", endPage);
 
         // add to the spring model
         theModel.addAttribute("posts", thePosts);

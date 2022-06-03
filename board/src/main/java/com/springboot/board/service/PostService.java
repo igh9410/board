@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PostService {
 
-    public List<Post> findAll();
+    public Page<Post> findAll(Pageable pageable);
 
     public Post findById(Long theId);
 

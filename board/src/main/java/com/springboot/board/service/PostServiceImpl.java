@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -23,9 +24,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> findAll() {
-        return postRepository.findAllByOrderByIdDesc();
+    public Page<Post> findAll(Pageable pageable) {
+        return postRepository.findAllByOrderByIdDesc(pageable);
     }
+
+
 
 
     @Override
