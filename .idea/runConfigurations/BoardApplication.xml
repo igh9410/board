@@ -4,7 +4,7 @@
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
     <option name="MAIN_CLASS_NAME" value="com.springboot.board.BoardApplication" />
-    <module name="board.board.main~1" />
+    <module name="board.board.main" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/board" />
     <extension name="coverage">
       <pattern>

@@ -8,25 +8,28 @@
   <title>Spring Boot Board Service - by Geon Hyuk Im</title>
 </head>
 <body>
-<div class="container">
+
+  <div class="container">
   <h3>Spring Boot Board Service - by Geon Hyuk Im</h3>
   <hr>
-
   <!-- Add a button -->
   <a th:href="@{/posts/showFormForAdd}"
      class="btn btn-primary btn-sm mb-3">
     Write
   </a>
+  <a th:href="@{/oauth2/authorization/google}" class="btn btn-secondary active" role="button">
+      Login with Google
+  </a>
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
     <tr>
-      <th>Post Number</th>
-      <th>Title</th>
-      <th>Writer</th>
-      <th>Action</th>
-      <th>Hits</th>
-      <th>Created Date</th>
-      <th>Last Updated Date</th>
+      <th style="width:5%">Post Number</th>
+      <th style="width:50%">Title</th>
+      <th style="width:10%">Writer</th>
+      <th style="width:15%">Action</th>
+      <th style="width:5%">Hits</th>
+      <th style="width:5%">Created Date</th>
+      <th style="width:10%">Last Updated Date</th>
     </thead>
 
     <tbody>
@@ -77,6 +80,6 @@
     </div>
     <button type="submit" class="btn btn-dark mb-2">Search</button>
   </form>
-</div>
+  </div>
 </body>
 </html>
