@@ -1,27 +1,29 @@
 package com.springboot.board.service;
 
 import com.springboot.board.dao.PostRepository;
+import com.springboot.board.dao.UserRepository;
 import com.springboot.board.entity.Post;
+import com.springboot.board.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PostServiceImpl implements PostService {
 
     private PostRepository postRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public PostServiceImpl(PostRepository thePostRepository) {
+    public PostServiceImpl(PostRepository thePostRepository, UserRepository theUserRepository) {
         postRepository = thePostRepository;
+        userRepository = theUserRepository;
     }
 
     @Override
@@ -52,12 +54,19 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ROLE_ADMIN') or #username == authentication.principal.username")
+    public void validateUser(Long theId, String username) {
+        return;
+    }
+
+    @Override
     public void save(Post thePost) {
         postRepository.save(thePost);
     }
 
     @Override
-    public void deleteById(Long theId) {
+    @PreAuthorize("hasRole('ROLE_ADMIN') or #username == authentication.principal.username")
+    public void deleteById(Long theId, String username) {
         postRepository.deleteById(theId);
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="UTF-8">
@@ -17,9 +17,16 @@
      class="btn btn-primary btn-sm mb-3">
     Write
   </a>
-  <a th:href="@{/oauth2/authorization/google}" class="btn btn-secondary active" role="button">
-      Login with Google
-  </a>
+    <a class="btn btn-secondary my-2 mr-2 my-sm-0" th:href="@{/accounts/login}"
+       sec:authorize="!isAuthenticated()">Login</a>
+    <a class="btn btn-secondary my-2 my-sm-0" th:href="@{/accounts/register}"
+       >Register</a>
+    <form class="form-inline my-2" th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()">
+      <span class="text-body" sec:authentication="name">User</span>
+      <span class="text-body mx-2" sec:authentication="principal.authorities">Role</span>
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+    </form>
+
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
     <tr>
@@ -48,6 +55,7 @@
         </a>
 
         <!-- Add delete button/link -->
+
         <a th:href="@{/posts/delete(postId=${tempPost.id})}"
            class="btn btn-danger btn-sm"
            onclick="if (!(confirm('Are you sure you want to delete this post?'))) return false">

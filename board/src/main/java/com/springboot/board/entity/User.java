@@ -26,7 +26,7 @@ public class User {
     private String password;
 
     @Column
-    private Boolean enabled;
+    private boolean enabled;
 
     @ManyToMany
     @JoinTable(
@@ -36,9 +36,6 @@ public class User {
     )
     List<Role> roles = new ArrayList<>();
 
-
-
-
-
-
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts = new ArrayList<>();
 }

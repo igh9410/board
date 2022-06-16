@@ -15,9 +15,11 @@ public interface PostService {
 
     public Post findById(Long theId);
 
+    public void validateUser(Long theId, String username);
+
     public void save(Post thePost);
 
-    public void deleteById(Long theId);
+    public void deleteById(Long theId, String username);
 
     public int updateHits(Long theId);
 

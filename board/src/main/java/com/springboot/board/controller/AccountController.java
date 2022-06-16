@@ -34,4 +34,6 @@ public class AccountController {
         return "redirect:/posts/list";
     }
 
+
+
 }
