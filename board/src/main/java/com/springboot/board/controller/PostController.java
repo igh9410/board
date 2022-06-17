@@ -59,7 +59,6 @@ public class PostController {
         String username = authentication.getName();
         User theUser = userService.findByUsername(username);
         thePost.setUser(theUser);
-        System.out.println(theUser.getUsername());
         theModel.addAttribute("post", thePost);
 
         return "posts/post-form";
@@ -73,7 +72,7 @@ public class PostController {
 
         // Validate if the user is authorized then get the post from the service
         Post thePost = postService.findById(theId);
-        System.out.println(thePost.getUser().getUsername());
+
         String username = thePost.getUser().getUsername();
 
         postService.validateUser(theId, username);

@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,13 +30,18 @@ public class Post {
     private Long id;
 
     @NotNull
+    @Size(min=2, max=45, message = "The length of title must be at least 2 characters and no more than 45 characters.")
     @Column(name="title")
     private String title;
 
-    @Column(name="content", columnDefinition = "TEXT", nullable = false)
+    @NotNull
+    @Size(min=2, message = "The length of content must be at least 2 characters.")
+    @Column(name="content", columnDefinition = "TEXT")
     private String content;
 
-    @Column(name="writer", nullable = false)
+    @NotNull
+    @Size(min=2, message = "The length of writer must be at least 2 characters.")
+    @Column(name="writer")
     private String writer;
 
     @Column(name="hits", nullable = false)
