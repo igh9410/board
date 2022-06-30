@@ -20,7 +20,7 @@ phases:
 
 artifacts:
   files:
-    - board/build/libs/*.jar
+    - board-0.0.1-SNAPSHOT.jar
 
 cache:
   paths:
