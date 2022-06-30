@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
-            throw new IllegalStateException("The user with same ID already exists");
+            throw new IllegalStateException("The user with the same ID already exists");
         }
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
