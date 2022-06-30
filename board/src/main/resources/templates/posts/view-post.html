@@ -11,8 +11,9 @@
 <div class="container">
     <h3>Spring Boot Board Service - by Geon Hyuk Im</h3>
     <hr>
-
-    <p th:text="${post.title}">Title</p>
+    <div class="form-group">
+        <p th:text="${post.title}">Title</p>
+    </div>
     <p th:text="${post.content}">Content</p>
 
     <a th:href="@{/posts/list}">Back to Main Page</a>

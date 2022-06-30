@@ -25,9 +25,4 @@ public class Role {
     @JsonIgnore
     private List<User> users;
 
-
-
-
-
-
 }
