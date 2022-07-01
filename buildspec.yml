@@ -18,10 +18,7 @@ phases:
     commands:
       - echo post_build
 
-artifacts:
-  files:
-    - board/build/libs/board-0.0.1-SNAPSHOT.jar
-  discard-paths: yes
+
 cache:
   paths:
     - path
