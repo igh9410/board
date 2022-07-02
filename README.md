@@ -11,7 +11,7 @@ Database: MySQL
 APIs: JPA (Java Persistence API), Lombok, etc..
 
 
-# Description:
+# Description
 A simple CRUD board service made from scratch using Spring Boot Framework, Spring Security and JPA.
 Not-logged-in users can only view posts.
 Logged-in users can write, update, and delete their OWN posts.
