@@ -4,6 +4,7 @@ import com.springboot.board.dao.PostRepository;
 import com.springboot.board.dao.UserRepository;
 import com.springboot.board.entity.Post;
 import com.springboot.board.entity.User;
+import com.springboot.board.exception.PostValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -48,7 +49,7 @@ public class PostServiceImpl implements PostService {
         }
         else {
             // we didn't find the post
-            throw new RuntimeException("Did not find post id - " + theId);
+            throw new PostValidationException("Did not find post id - " + theId);
         }
         return thePost;
     }

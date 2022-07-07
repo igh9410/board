@@ -21,15 +21,21 @@
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{id}" />
         <input type="hidden" th:field="*{user}" />
-        <input type="text" th:field="*{title}"
-               class="form-control mb-4 col-4" placeholder="Title">
-
-        <input type="text" th:field="*{content}"
-               class="form-control mb-4 col-4" placeholder="Content">
-
-        <input type="text" th:field="*{writer}"
+        <div class="form-group">
+            <input type="text" th:field="*{title}"
+                   class="form-control mb-4 col-4" placeholder="Title">
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+        </div>
+        <div class="form-group">
+            <textarea th:field="*{content}"
+                      class="form-control mb-4 col-4" placeholder="Content"></textarea>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></div>
+        </div>
+        <div class="form-group">
+            <input type="text" th:field="*{writer}"
                class="form-control mb-4 col-4" placeholder="Writer">
-
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}"></div>
+        </div>
         <input type="hidden" th:field="*{hits}">
         <input type="hidden" th:field="*{dateCreated}">
         <input type="hidden" th:field="*{lastUpdated}">
