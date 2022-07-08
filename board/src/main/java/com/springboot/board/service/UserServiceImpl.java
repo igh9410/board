@@ -5,6 +5,7 @@ import com.springboot.board.dao.UserRepository;
 import com.springboot.board.entity.Post;
 import com.springboot.board.entity.Role;
 import com.springboot.board.entity.User;
+import com.springboot.board.exception.DuplicateUserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
-            throw new IllegalStateException("The user with the same ID already exists");
+            throw new DuplicateUserException("The user with the same ID already exists");
         }
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);

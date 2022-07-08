@@ -87,11 +87,15 @@ public class PostController {
 
     // add mapping for saving the article
     @PostMapping("/save")
-    public String savePost(@ModelAttribute("post") Post thePost, Authentication authentication) {
+    public String savePost(@ModelAttribute("post") @Valid Post thePost, BindingResult result, Authentication authentication) {
 
         String username = authentication.getName();
 
         User theUser = userService.findByUsername(username);
+        if (result.hasErrors()) {
+            return "posts/post-form";
+        }
+
 
         // save the post and prevent changing post username when logged in as Admin
         postService.save(thePost);

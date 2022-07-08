@@ -1,6 +1,8 @@
 package com.springboot.board.exception;
 
 import com.springboot.board.exception.CustomErrorResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,19 +19,40 @@ import java.nio.file.AccessDeniedException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
     @ExceptionHandler(PostValidationException.class)
     public String handlePostException(PostValidationException exc, Model theModel) {
+        LOGGER.error(exc.getMessage(), exc);
         theModel.addAttribute("error", exc.getMessage());
-        // return ResponseEntity
-
         return "errors/post-error";
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public String handleMissingParameterException(MissingServletRequestParameterException exc) {
+        LOGGER.error(exc.getMessage(), exc);
         return "errors/access-denied";
     }
 
+    @ExceptionHandler(DuplicateUserException.class)
+    public String handleDuplicateUserException(DuplicateUserException exc, Model theModel) {
+        LOGGER.error(exc.getMessage(), exc);
+        theModel.addAttribute("error", exc.getMessage());
+        return "accounts/register";
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public String handleConstraintViolationException(ConstraintViolationException exc) {
+        LOGGER.error(exc.getMessage(), exc);
+        return "posts/post-form";
+    }
+
+    // ExceptionHandler for other types of exceptions
+    @ExceptionHandler(RuntimeException.class)
+    public String handleGeneralException(RuntimeException exc) {
+        LOGGER.error(exc.getMessage(), exc);
+        return "error";
+    }
 
     /*
     // Add an exception handler for AccessDeniedException

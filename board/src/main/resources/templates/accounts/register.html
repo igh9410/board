@@ -22,11 +22,13 @@
         <div th:if="${param.logout}" class="alert alert-primary" role="alert">
             You have been logged out.
         </div>
+
         <label for="username" class="sr-only">Username</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+        <div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}">
+        </div>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-    
         <button class="btn btn-lg btn-primary btn-block" type="submit">Registration</button>
 
     </form>
