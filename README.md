@@ -19,3 +19,6 @@ Non-admins will be redirected to the access-denied page if they try to update or
 Admin is accessible to all CRUD operations.
 
 Users can search posts by titles and contents.
+
+# Update Logs
+7/7/2022 - Added GlobalExceptionHandler class using @ControllerAdvice. 
