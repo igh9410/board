@@ -54,30 +54,6 @@ public class GlobalExceptionHandler {
         return "error";
     }
 
-    /*
-    // Add an exception handler for AccessDeniedException
-    @ExceptionHandler(AccessDeniedException.class)
-    @RequestMapping("/errors")
-    public String handleAccessDeniedException(AccessDeniedException exc) {
-        // return ResponseEntity
-
-        return "errors/access-denied";
-    } */
-
-    /*
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<CustomErrorResponse> handleException(RuntimeException exc) {
-
-
-        CustomErrorResponse error = new CustomErrorResponse(
-                HttpStatus.NOT_FOUND.value(),
-                exc.getMessage(),
-                System.currentTimeMillis());
-
-        // return ResponseEntity
-
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    } */
 
     
 

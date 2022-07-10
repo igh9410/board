@@ -1,0 +1,4 @@
+FROM openjdk:11
+ADD build/libs/board.jar board.jar
+EXPOSE 5000
+ENTRYPOINT ["java", "-jar", "board.jar"]
