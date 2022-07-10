@@ -1,5 +1,5 @@
 # board
-Service Link: http://springbootboardservice-env.eba-xppdbmk5.ap-northeast-2.elasticbeanstalk.com/posts/list
+Service Link: http://springbootboardservicedocker-env-1.eba-ynupp3ae.ap-northeast-2.elasticbeanstalk.com/posts/list
 id: test
 password: dummy
 
