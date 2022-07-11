@@ -24,9 +24,12 @@ Admin is accessible to all CRUD operations.
 
 Users can search posts by titles and contents.
 
+# ERD          
+![boardServiceERD](https://user-images.githubusercontent.com/31177070/178195912-df5f3e57-8156-46f0-a488-db85dae7aa1e.png)
+
 # Update Logs
 7/7/2022 - Added GlobalExceptionHandler class using @ControllerAdvice.
          - Added Custom Error Pages for Each Exception.
          
 7/10/2022 - Migrated from Amazon Linux environment to Docker Environment
-          
+
