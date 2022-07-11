@@ -1,5 +1,6 @@
 # board
 Service Link: http://springbootboardservice-env.eba-xppdbmk5.ap-northeast-2.elasticbeanstalk.com/posts/list
+Running on local machines using Docker: type on the CLI docker pull igh9410/board:ver_1 
 id: test
 password: dummy
 
