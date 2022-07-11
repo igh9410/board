@@ -27,5 +27,6 @@ Users can search posts by titles and contents.
 # Update Logs
 7/7/2022 - Added GlobalExceptionHandler class using @ControllerAdvice.
          - Added Custom Error Pages for Each Exception.
+         
 7/10/2022 - Migrated from Amazon Linux environment to Docker Environment
           
