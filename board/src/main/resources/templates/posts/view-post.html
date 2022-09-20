@@ -12,9 +12,9 @@
     <h3>Spring Boot Board Service - by Geon Hyuk Im</h3>
     <hr>
     <div class="form-group">
-        <p th:text="${post.title}">Title</p>
+        <p th:utext="${post.title}">Title</p>
     </div>
-    <p th:text="${post.content}">Content</p>
+    <p th:utext="${post.content}">Content<br/></p>
     <a th:href="@{/posts/list}">Back to Main Page</a>
 </div>
 </body>
